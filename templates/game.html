@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<head>
+    <style>
+    input[type=submit] {
+    background-color: #114B5F;
+    color: #FFFFFF;
+    cursor: pointer;
+    }
+    label {
+    margin-right: 20px;
+    font-family: Georgia;
+    font-size: 18px;
+    }
+
+    </style>
+</head>
+<table width="100%">
+    <tr>
+        <td valign="top" style="width: 60%">
+            <br>
+            <h2 style="font-family:georgia; font-size: 25px; color: #114B5F"><b>Кулинарная лингвистика</b></h2>
+            <br>
+            <p style="margin-right:20px; font-family:georgia; font-size: 18px;">
+            В этом разделе Вы сможете проверить свою языковую интуицию и определить, является ли текст оригинальным
+                или сгенерированным моделью.<br></p>
+            <p style="font-family:georgia; font-size: 18px; color: #114B5F"><br><b>Как это работает?</b><br></p>
+            <p style="margin-right:20px; font-family:georgia; font-size: 18px">
+                Вам дается 10 предложений. К каждому предложению дается два продолжения на выбор.
+                Выберите тот вариант ответа, который, по Вашему мнению, был написан человеком.<br></p>
+            <p style="margin-right:20px; font-family:georgia; font-size: 18px;">
+                После нажатия кнопки "Отправить", вы сможете узнать правильные ответы.
+            </p>
+        </td>
+        <td style="width: 40%">
+            <img src="{{url_for('static', filename='photos/game0.jpeg')}}"  width="350" height="385"
+                        style="border: 5px solid #114B5F; margin-left:60px">
+            <br>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+    <td width="100%">
+        <hr style="background-color: #114B5F; color: #114B5F; height: 2px">
+            <form action="/result">
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>1. {{ result[0][0] }}</b></p>
+                <input type="radio" id="1.1" name="q1" value="{{ result[0][1] }}">
+                <label for="1.1">{{ result[0][1] }}</label><br>
+                <input type="radio" id="1.2" name="q1" value="{{ result[0][2] }}">
+                <label for="1.2">{{ result[0][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>2. {{ result[1][0] }}</b></p>
+                <input type="radio" id="2.1" name="q2" value="{{ result[1][1] }}">
+                <label for="2.1">{{ result[1][1] }}</label><br>
+                <input type="radio" id="2.2" name="q2" value="{{ result[1][2] }}">
+                <label for="2.2">{{ result[1][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>3. {{ result[2][0] }}</b></p>
+                <input type="radio" id="3.1" name="q3" value="{{ result[2][1] }}">
+                <label for="3.1">{{ result[2][1] }}</label><br>
+                <input type="radio" id="3.2" name="q3" value="{{ result[2][2] }}">
+                <label for="3.2">{{ result[2][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>4. {{ result[3][0] }}</b></p>
+                <input type="radio" id="4.1" name="q4" value="{{ result[3][1] }}">
+                <label for="4.1">{{ result[3][1] }}</label><br>
+                <input type="radio" id="4.2" name="q4" value="{{ result[3][2] }}">
+                <label for="4.2">{{ result[3][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>5. {{ result[4][0] }}</b></p>
+                <input type="radio" id="5.1" name="q5" value="{{ result[4][1] }}">
+                <label for="5.1">{{ result[4][1] }}</label><br>
+                <input type="radio" id="5.2" name="q5" value="{{ result[4][2] }}">
+                <label for="5.2">{{ result[4][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>6. {{ result[5][0] }}</b></p>
+                <input type="radio" id="6.1" name="q6" value="{{ result[5][1] }}">
+                <label for="6.1">{{ result[5][1] }}</label><br>
+                <input type="radio" id="6.2" name="q6" value="{{ result[5][2] }}">
+                <label for="6.2">{{ result[5][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>7. {{ result[6][0] }}</b></p>
+                <input type="radio" id="7.1" name="q7" value="{{ result[6][1] }}">
+                <label for="7.1">{{ result[6][1] }}</label><br>
+                <input type="radio" id="7.2" name="q7" value="{{ result[6][2] }}">
+                <label for="7.2">{{ result[6][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>8. {{ result[7][0] }}</b></p>
+                <input type="radio" id="8.1" name="q8" value="{{ result[7][1] }}">
+                <label for="8.1">{{ result[7][1] }}</label><br>
+                <input type="radio" id="8.2" name="q8" value="{{ result[7][2] }}">
+                <label for="8.2">{{ result[7][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>9. {{ result[8][0] }}</b></p>
+                <input type="radio" id="9.1" name="q9" value="{{ result[8][1] }}">
+                <label for="9.1">{{ result[8][1] }}</label><br>
+                <input type="radio" id="9.2" name="q9" value="{{ result[8][2] }}">
+                <label for="9.2">{{ result[8][2] }}</label><br>
+                </div>
+
+                <div class="form-group">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px"><b>10. {{ result[9][0] }}</b></p>
+                <input type="radio" id="10.1" name="q10" value="{{ result[9][1] }}">
+                <label for="10.1">{{ result[9][1] }}</label><br>
+                <input type="radio" id="10.2" name="q10" value="{{ result[9][2] }}">
+                <label for="10.2">{{ result[9][2] }}</label><br>
+                </div>
+
+                <input type="submit" value="Отправить">
+            </form>
+    </td>
+    </tr>
+</table>
+{% endblock %}
