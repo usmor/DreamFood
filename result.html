@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<head>
+    <style>
+         TABLE {
+                width: 120%
+                border-collapse: collapse;
+               }
+         TD, TH {
+                padding: 3px;
+                border: 2px solid #2F4F4F;
+
+               }
+        TH {text-align: center
+        }
+    </style>
+</head>
+<h2 style="font-family:georgia; font-size: 25px; color: #114B5F"><b>Кулинарная лингвистика</b></h2>
+<br>
+<p style="margin-right:20px; font-family:georgia; font-size: 18px;"><b>Процент правильных ответов: {{ result[10] }}</b></p>
+
+<br>
+
+<table>
+    <tr>
+        <th style="margin-right:20px; font-family:georgia; font-size: 18px; color: #114B5F">Искомая фраза</th>
+        <th style="margin-right:20px; font-family:georgia; font-size: 18px; color: #114B5F">Правильный ответ</th>
+        <th style="margin-right:20px; font-family:georgia; font-size: 18px; color: #114B5F">Результат</th>
+    </tr>
+    <ul>
+        {% for i in range(10)%}
+        <tr>
+            <td width="45%">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px;">{{ result[i][0] }}</p>
+            </td>
+            <td width="45%">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px;">{{ result[i][1] }}</p>
+            </td>
+            <td width="30%">
+                <p style="margin-right:20px; font-family:georgia; font-size: 18px; text-align: center">{{ result[i][2] }}</p>
+            </td>
+        </tr>
+        {% endfor %}
+    </ul>
+
+</table>
+
+
+
+{% endblock %}

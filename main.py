@@ -258,14 +258,14 @@ def visualisation(final_combinations):
 
 
 # для хранения правильных ответов создаем глобальную переменную
-right_answers = []
+right_answers = None
 
 
 # при вызове функции game_to_send() проиходит переход на страницу game.html
 @app.route('/game')
 def game_to_send(name=None):
     global right_answers
-
+    right_answers = []
     # выбираем 10 рандомных строк из датафрейма для создания опросника
     questions = []
     df = pd.read_csv('generated_texts.csv')
@@ -291,23 +291,22 @@ def game_to_send(name=None):
 @app.route('/result')
 def game_count(name=None):
     answers = []
-    result = []
-    counter = 0
 
     # получаем от пользователя ответы
     for a in range(1, 11):
         answers.append(request.args.get(f'q{a}'))
+
+    counter = 0
+    result = []
     if not all(answers):
         return render_template('error.html')
     else:
-        # считаем количество правильных ответов
         for a in range(len(answers)):
             if answers[a] == right_answers[a][1]:
                 counter += 1
                 result.append(right_answers[a] + ['Правильно'])
             else:
                 result.append(right_answers[a] + ['Неправильно'])
-
         result.append(counter)
 
     return render_template('result.html', name=name, result=result)
